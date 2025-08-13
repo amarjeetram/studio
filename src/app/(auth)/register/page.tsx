@@ -1,3 +1,4 @@
+
 'use client';
 
 import Link from 'next/link';
@@ -87,15 +88,15 @@ export default function RegisterPage() {
 
   return (
     <Card className="w-full max-w-md">
-      <CardHeader>
-        <CardTitle className="font-headline text-2xl">Create an Account</CardTitle>
-        <CardDescription>
-          Join StarRise Network and start your journey to success.
-        </CardDescription>
-      </CardHeader>
-      <CardContent>
-        <Form {...form}>
-          <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
+      <Form {...form}>
+        <form onSubmit={form.handleSubmit(onSubmit)}>
+          <CardHeader>
+            <CardTitle className="font-headline text-2xl">Create an Account</CardTitle>
+            <CardDescription>
+              Join StarRise Network and start your journey to success.
+            </CardDescription>
+          </CardHeader>
+          <CardContent className="space-y-4">
             <FormField
               control={form.control}
               name="fullName"
@@ -161,22 +162,20 @@ export default function RegisterPage() {
                 </FormItem>
               )}
             />
-            <div className="pt-4">
-                <Button type="submit" className="w-full bg-primary hover:bg-primary/90" disabled={form.formState.isSubmitting}>
-                    {form.formState.isSubmitting ? 'Creating Account...' : 'Create Account'}
-                </Button>
+          </CardContent>
+          <CardFooter className="flex flex-col gap-4">
+            <Button type="submit" className="w-full bg-primary hover:bg-primary/90" disabled={form.formState.isSubmitting}>
+              {form.formState.isSubmitting ? 'Creating Account...' : 'Create Account'}
+            </Button>
+            <div className="text-center text-sm">
+              Already have an account?{' '}
+              <Link href="/login" className="underline text-accent">
+                Log in
+              </Link>
             </div>
-          </form>
-        </Form>
-      </CardContent>
-      <CardFooter className="flex flex-col gap-4">
-        <div className="text-center text-sm">
-          Already have an account?{' '}
-          <Link href="/login" className="underline text-accent">
-            Log in
-          </Link>
-        </div>
-      </CardFooter>
+          </CardFooter>
+        </form>
+      </Form>
     </Card>
   );
 }

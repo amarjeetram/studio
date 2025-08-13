@@ -24,7 +24,6 @@ import {
   FormMessage,
 } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
-import { useToast } from '@/hooks/use-toast';
 import { auth, db } from '@/lib/firebase';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
 import { setDoc, doc } from 'firebase/firestore';
@@ -41,7 +40,6 @@ type RegisterFormValues = z.infer<typeof registerSchema>;
 
 export default function RegisterPage() {
   const router = useRouter();
-  const { toast } = useToast();
   const form = useForm<RegisterFormValues>({
     resolver: zodResolver(registerSchema),
     defaultValues: {
@@ -69,19 +67,12 @@ export default function RegisterPage() {
         createdAt: new Date(),
       });
       
-      toast({
-          title: "Account Created!",
-          description: "You have been successfully registered.",
-      });
+      alert("Account Created! You have been successfully registered.");
       router.push('/dashboard');
 
     } catch (error: any) {
       console.error('Registration error:', error);
-       toast({
-          title: "Registration Failed",
-          description: error.message || "An unexpected error occurred.",
-          variant: "destructive",
-       });
+       alert(`Registration Failed: ${error.message || "An unexpected error occurred."}`);
     }
   }
 

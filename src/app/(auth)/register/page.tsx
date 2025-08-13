@@ -73,9 +73,15 @@ export default function RegisterPage() {
     } catch (error: any) {
       console.error('Registration error:', error);
       if (error.code === 'auth/email-already-in-use') {
-        alert("This email is already registered. Please use a different email or log in.");
+        form.setError('email', {
+          type: 'manual',
+          message: 'This email is already registered. Please log in.',
+        });
       } else {
-        alert(`Registration Failed: ${error.message || "An unexpected error occurred."}`);
+        form.setError('root', {
+          type: 'manual',
+          message: `Registration Failed: ${error.message || "An unexpected error occurred."}`,
+        });
       }
     }
   }
@@ -156,6 +162,9 @@ export default function RegisterPage() {
                 </FormItem>
               )}
             />
+             {form.formState.errors.root && (
+                <FormMessage>{form.formState.errors.root.message}</FormMessage>
+              )}
           </CardContent>
           <CardFooter className="flex flex-col gap-4">
             <Button type="submit" className="w-full bg-primary hover:bg-primary/90" disabled={form.formState.isSubmitting}>

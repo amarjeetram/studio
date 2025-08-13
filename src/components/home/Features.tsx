@@ -35,18 +35,28 @@ export function Features() {
           </p>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-          {features.map((feature) => (
-            <Card key={feature.title} className="text-center p-6 shadow-lg hover:shadow-xl hover:-translate-y-2 transition-all duration-300 border-primary/10">
-              <CardHeader className="items-center">
-                <div className="p-4 bg-accent/10 rounded-full mb-4">
-                  {feature.icon}
-                </div>
-                <CardTitle className="font-headline text-xl font-semibold">{feature.title}</CardTitle>
-              </CardHeader>
-              <CardDescription>
-                {feature.description}
-              </CardDescription>
-            </Card>
+          {features.map((feature, index) => (
+             <div key={feature.title} className="[perspective:1000px]">
+                <Card  className="text-center p-6 h-full transition-all duration-500 [transform-style:preserve-3d] hover:[transform:rotateY(180deg)] bg-card border-2 border-primary/10 hover:bg-primary/5">
+                   <div className="absolute inset-0 w-full h-full bg-card rounded-xl [backface-visibility:hidden]">
+                     <CardHeader className="items-center">
+                       <div className="p-4 bg-accent/10 rounded-full mb-4">
+                         {feature.icon}
+                       </div>
+                       <CardTitle className="font-headline text-xl font-semibold">{feature.title}</CardTitle>
+                     </CardHeader>
+                     <CardDescription>
+                       {feature.description}
+                     </CardDescription>
+                   </div>
+                   <div className="absolute inset-0 w-full h-full rounded-xl bg-primary/5 [transform:rotateY(180deg)] [backface-visibility:hidden]">
+                       <div className="flex flex-col items-center justify-center h-full text-center p-6">
+                            <p className="font-headline text-lg font-semibold text-primary">{feature.title}</p>
+                            <p className="text-sm text-muted-foreground mt-2">{feature.description}</p>
+                       </div>
+                   </div>
+                </Card>
+            </div>
           ))}
         </div>
       </div>

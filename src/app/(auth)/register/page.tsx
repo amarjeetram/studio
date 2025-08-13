@@ -69,7 +69,6 @@ export default function RegisterPage() {
         createdAt: new Date(),
       });
       
-      console.log('User created and data saved!');
       toast({
           title: "Account Created!",
           description: "You have been successfully registered.",

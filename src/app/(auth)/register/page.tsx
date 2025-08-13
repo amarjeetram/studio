@@ -26,7 +26,7 @@ import {
 import { Input } from '@/components/ui/input';
 import { auth, db } from '@/lib/firebase';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
-import { setDoc, doc } from 'firebase/firestore';
+import { setDoc, doc, serverTimestamp } from 'firebase/firestore';
 
 const registerSchema = z.object({
   fullName: z.string().min(2, 'Full name must be at least 2 characters.'),
@@ -64,7 +64,7 @@ export default function RegisterPage() {
         email: data.email,
         phone: data.phone,
         referralId: data.referralId || null,
-        createdAt: new Date(),
+        createdAt: serverTimestamp(),
       });
       
       alert("Account Created! You have been successfully registered.");
@@ -72,7 +72,11 @@ export default function RegisterPage() {
 
     } catch (error: any) {
       console.error('Registration error:', error);
-       alert(`Registration Failed: ${error.message || "An unexpected error occurred."}`);
+      if (error.code === 'auth/email-already-in-use') {
+        alert("This email is already registered. Please use a different email or log in.");
+      } else {
+        alert(`Registration Failed: ${error.message || "An unexpected error occurred."}`);
+      }
     }
   }
 

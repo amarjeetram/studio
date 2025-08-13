@@ -8,7 +8,7 @@ const firebaseConfig = {
   apiKey: "AIzaSyAxRuiDaa3gENn6-85Naol3kmpayFZ6heQ",
   authDomain: "stare-6545e.firebaseapp.com",
   projectId: "stare-6545e",
-  storageBucket: "stare-6545e.firebasestorage.app",
+  storageBucket: "stare-6545e.appspot.com",
   messagingSenderId: "650083270679",
   appId: "1:650083270679:web:cab7fcd3cedffd247cdc52",
   measurementId: "G-DEZ0GYDPWM"

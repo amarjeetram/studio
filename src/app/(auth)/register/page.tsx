@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import * as z from 'zod';
@@ -22,6 +23,10 @@ import {
   FormMessage,
 } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
+import { useToast } from '@/hooks/use-toast';
+import { auth, db } from '@/lib/firebase';
+import { createUserWithEmailAndPassword } from 'firebase/auth';
+import { setDoc, doc } from 'firebase/firestore';
 
 const registerSchema = z.object({
   fullName: z.string().min(2, 'Full name must be at least 2 characters.'),
@@ -34,6 +39,8 @@ const registerSchema = z.object({
 type RegisterFormValues = z.infer<typeof registerSchema>;
 
 export default function RegisterPage() {
+  const router = useRouter();
+  const { toast } = useToast();
   const form = useForm<RegisterFormValues>({
     resolver: zodResolver(registerSchema),
     defaultValues: {
@@ -45,10 +52,37 @@ export default function RegisterPage() {
     },
   });
 
-  function onSubmit(data: RegisterFormValues) {
-    console.log('Form submitted:', data);
-    // Here you would typically handle the registration logic,
-    // e.g., make an API call to your backend.
+  async function onSubmit(data: RegisterFormValues) {
+    try {
+      // 1. Create user in Firebase Auth
+      const userCredential = await createUserWithEmailAndPassword(auth, data.email, data.password);
+      const user = userCredential.user;
+
+      // 2. Save user data to Firestore
+      await setDoc(doc(db, "users", user.uid), {
+        uid: user.uid,
+        fullName: data.fullName,
+        email: data.email,
+        phone: data.phone,
+        referralId: data.referralId || null,
+        createdAt: new Date(),
+      });
+      
+      console.log('User created and data saved!');
+      toast({
+          title: "Account Created!",
+          description: "You have been successfully registered.",
+      });
+      router.push('/dashboard');
+
+    } catch (error: any) {
+      console.error('Registration error:', error);
+       toast({
+          title: "Registration Failed",
+          description: error.message || "An unexpected error occurred.",
+          variant: "destructive",
+       });
+    }
   }
 
   return (
@@ -127,11 +161,11 @@ export default function RegisterPage() {
                 </FormItem>
               )}
             />
-            <CardFooter className="flex flex-col gap-4 px-0 pb-0 pt-4">
-              <Button type="submit" className="w-full bg-primary hover:bg-primary/90">
-                Create Account
-              </Button>
-            </CardFooter>
+            <div className="pt-4">
+                <Button type="submit" className="w-full bg-primary hover:bg-primary/90" disabled={form.formState.isSubmitting}>
+                    {form.formState.isSubmitting ? 'Creating Account...' : 'Create Account'}
+                </Button>
+            </div>
           </form>
         </Form>
       </CardContent>

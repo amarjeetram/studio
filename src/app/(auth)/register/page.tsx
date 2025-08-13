@@ -67,7 +67,6 @@ export default function RegisterPage() {
         createdAt: serverTimestamp(),
       });
       
-      alert("Account Created! You have been successfully registered.");
       router.push('/dashboard');
 
     } catch (error: any) {

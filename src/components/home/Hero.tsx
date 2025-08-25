@@ -14,7 +14,7 @@ export function Hero() {
         <div className="grid md:grid-cols-2 gap-12 items-center">
           <div className="text-center md:text-left">
             <h1 className="font-headline text-4xl md:text-5xl lg:text-6xl font-bold tracking-tighter mb-6 text-primary dark:text-white">
-              Unlock Your Potential with StarRise Network
+              The Future of Smart Investing
             </h1>
             <p className="text-lg md:text-xl text-muted-foreground mb-8 max-w-2xl mx-auto md:mx-0">
               Join a thriving community dedicated to mentorship, growth, and financial freedom. Your journey to success begins now.

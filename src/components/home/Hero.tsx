@@ -16,7 +16,7 @@ export function Hero() {
             <h1 className="font-headline text-4xl md:text-5xl lg:text-6xl font-bold tracking-tighter mb-6 text-primary dark:text-white">
               The Future of Smart Investing
             </h1>
-            <p className="text-lg md:text-xl text-muted-foreground mb-8 max-w-2xl mx-auto md:mx-0">
+            <p className="text-lg md:text-xl text-muted-foreground mb-8 max-w-xl mx-auto md:mx-0">
               Join a thriving community dedicated to mentorship, growth, and financial freedom. Your journey to success begins now.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
@@ -53,7 +53,7 @@ export function Hero() {
                 </div>
             </div>
           </div>
-          <div className="relative group">
+          <div className="relative group hidden md:block">
             <div className="absolute -inset-1 bg-gradient-to-r from-primary to-accent rounded-xl blur opacity-25 group-hover:opacity-50 transition duration-1000 animate-tilt"></div>
             <Image
               src="https://placehold.co/600x400.png"

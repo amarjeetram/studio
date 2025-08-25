@@ -60,15 +60,15 @@ export function AboutAi() {
             <Card className="p-8 bg-gray-100 dark:bg-gray-800/50">
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
                     <div>
-                        <p className="text-5xl font-bold text-primary">15k+</p>
+                        <p className="text-4xl md:text-5xl font-bold text-primary">15k+</p>
                         <p className="text-muted-foreground mt-2">Trusted Users</p>
                     </div>
                      <div>
-                        <p className="text-5xl font-bold text-primary">5k+</p>
+                        <p className="text-4xl md:text-5xl font-bold text-primary">5k+</p>
                         <p className="text-muted-foreground mt-2">Positive Reviews</p>
                     </div>
                      <div>
-                        <p className="text-5xl font-bold text-primary">35%</p>
+                        <p className="text-4xl md:text-5xl font-bold text-primary">35%</p>
                         <p className="text-muted-foreground mt-2">Average Monthly Return</p>
                     </div>
                 </div>

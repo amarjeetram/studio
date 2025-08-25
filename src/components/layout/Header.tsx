@@ -9,6 +9,8 @@ import {
   Search,
   ShoppingCart,
   Users2,
+  Eye,
+  Send,
 } from "lucide-react"
 
 import {
@@ -23,6 +25,15 @@ import { Input } from "@/components/ui/input"
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
 import { Button } from "../ui/button"
 import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar"
+import { Logo } from "../icons/Logo"
+
+const mobileNavLinks = [
+    { href: "/dashboard", icon: Home, label: "Dashboard" },
+    { href: "/dashboard/ad-view", icon: Eye, label: "Ad View" },
+    { href: "/dashboard/team", icon: Users2, label: "My Team" },
+    { href: "/dashboard/telegram", icon: Send, label: "Telegram Bonus" },
+]
+
 
 export function Header() {
     return (
@@ -37,40 +48,22 @@ export function Header() {
             <SheetContent side="left" className="sm:max-w-xs">
               <nav className="grid gap-6 text-lg font-medium">
                 <Link
-                  href="#"
+                  href="/dashboard"
                   className="group flex h-10 w-10 shrink-0 items-center justify-center gap-2 rounded-full bg-primary text-lg font-semibold text-primary-foreground md:text-base"
                 >
                   <Package2 className="h-5 w-5 transition-all group-hover:scale-110" />
                   <span className="sr-only">StarRise Network</span>
                 </Link>
-                <Link
-                  href="/dashboard"
-                  className="flex items-center gap-4 px-2.5 text-muted-foreground hover:text-foreground"
-                >
-                  <Home className="h-5 w-5" />
-                  Dashboard
-                </Link>
-                <Link
-                  href="/dashboard/ad-view"
-                  className="flex items-center gap-4 px-2.5 text-muted-foreground hover:text-foreground"
-                >
-                  <ShoppingCart className="h-5 w-5" />
-                  Ad View
-                </Link>
-                <Link
-                  href="/dashboard/team"
-                  className="flex items-center gap-4 px-2.5 text-foreground"
-                >
-                  <Users2 className="h-5 w-5" />
-                  My Team
-                </Link>
-                <Link
-                  href="#"
-                  className="flex items-center gap-4 px-2.5 text-muted-foreground hover:text-foreground"
-                >
-                  <LineChart className="h-5 w-5" />
-                  Settings
-                </Link>
+                {mobileNavLinks.map(link => (
+                    <Link
+                        key={link.href}
+                        href={link.href}
+                        className="flex items-center gap-4 px-2.5 text-muted-foreground hover:text-foreground"
+                    >
+                        <link.icon className="h-5 w-5" />
+                        {link.label}
+                    </Link>
+                ))}
               </nav>
             </SheetContent>
           </Sheet>

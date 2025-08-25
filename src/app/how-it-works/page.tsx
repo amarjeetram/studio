@@ -45,22 +45,17 @@ export default function HowItWorksPage() {
 
         <section className="py-20 md:py-28">
             <div className="container">
-                <div className="relative">
-                    <div className="absolute left-1/2 -translate-x-1/2 top-12 bottom-12 w-1 bg-border/50 rounded-full hidden md:block"></div>
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
                     {steps.map((step, index) => (
-                         <div key={index} className={`flex items-center w-full mb-8 md:mb-0 ${index % 2 === 0 ? 'md:justify-start' : 'md:justify-end'}`}>
-                            <div className={`w-full md:w-5/12 ${index % 2 === 0 ? 'md:pr-8' : 'md:pl-8'}`}>
-                                <Card className="shadow-lg hover:shadow-xl transition-shadow">
-                                    <CardHeader className="flex flex-row items-center gap-4">
-                                        <div className="p-3 bg-accent/10 rounded-full">{step.icon}</div>
-                                        <CardTitle className="font-headline text-2xl">{step.title}</CardTitle>
-                                    </CardHeader>
-                                    <CardContent>
-                                        <p className="text-muted-foreground">{step.description}</p>
-                                    </CardContent>
-                                </Card>
-                            </div>
-                         </div>
+                        <Card key={index} className="shadow-lg hover:shadow-xl transition-shadow text-center md:text-left">
+                            <CardHeader className="flex flex-col md:flex-row items-center gap-4">
+                                <div className="p-3 bg-accent/10 rounded-full flex-shrink-0">{step.icon}</div>
+                                <CardTitle className="font-headline text-2xl">{step.title}</CardTitle>
+                            </CardHeader>
+                            <CardContent>
+                                <p className="text-muted-foreground">{step.description}</p>
+                            </CardContent>
+                        </Card>
                     ))}
                 </div>
             </div>
@@ -68,7 +63,7 @@ export default function HowItWorksPage() {
 
         <section className="py-20 md:py-28 bg-background">
           <div className="container">
-            <div className="bg-gradient-to-r from-primary to-accent rounded-xl p-12 text-center shadow-2xl">
+            <div className="bg-gradient-to-r from-primary to-accent rounded-xl p-8 md:p-12 text-center shadow-2xl">
               <h2 className="font-headline text-3xl md:text-4xl font-bold text-primary-foreground mb-4">
                 Start Your Journey Today
               </h2>

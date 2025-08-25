@@ -2,6 +2,7 @@ import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { ArrowRight, Star } from 'lucide-react';
 import Image from 'next/image';
+import { Avatar } from '@/components/ui/avatar';
 
 export function Hero() {
   return (
@@ -59,13 +60,4 @@ export function Hero() {
       </div>
     </section>
   );
-}
-
-
-function Avatar({ className }: { className?: string }) {
-    return (
-        <div className={`relative flex h-10 w-10 shrink-0 overflow-hidden rounded-full ${className}`}>
-            <img className="aspect-square h-full w-full" alt="User avatar" src="https://placehold.co/40x40.png" data-ai-hint="person avatar" />
-        </div>
-    )
 }

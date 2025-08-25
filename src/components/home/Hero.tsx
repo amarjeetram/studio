@@ -1,16 +1,15 @@
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
-import { ArrowRight, Star } from 'lucide-react';
+import { ArrowRight, Star, PlayCircle } from 'lucide-react';
 import Image from 'next/image';
-import { Avatar } from '@/components/ui/avatar';
+import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 
 export function Hero() {
   return (
-    <section className="relative overflow-hidden bg-gradient-to-b from-background via-indigo-50 to-background dark:from-background dark:via-primary/10 dark:to-background py-20 md:py-32">
-       <div className="absolute inset-0 z-0 opacity-20">
-         <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-accent rounded-full filter blur-3xl animate-blob"></div>
-         <div className="absolute top-1/2 right-1/4 w-96 h-96 bg-primary rounded-full filter blur-3xl animate-blob animation-delay-2000"></div>
-       </div>
+    <section className="relative overflow-hidden bg-gradient-to-b from-background via-primary/10 to-background dark:from-background dark:via-primary/20 dark:to-background py-20 md:py-32">
+       <div className="absolute -top-1/2 -left-1/4 w-full h-full transform-gpu rotate-[-25deg] opacity-10 dark:opacity-5" style={{
+         background: 'radial-gradient(circle at center, hsl(var(--primary)) 0%, transparent 60%)'
+       }}></div>
        <div className="container mx-auto px-4 relative z-10">
         <div className="grid md:grid-cols-2 gap-12 items-center">
           <div className="text-center md:text-left">
@@ -21,26 +20,36 @@ export function Hero() {
               Join a thriving community dedicated to mentorship, growth, and financial freedom. Your journey to success begins now.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
-              <Button asChild size="lg" className="bg-accent hover:bg-accent/90 text-accent-foreground shadow-lg transition-transform hover:scale-105">
+              <Button asChild size="lg" className="bg-primary hover:bg-primary/90 text-primary-foreground shadow-lg transition-transform hover:scale-105">
                 <Link href="/register">
                   Get Started <ArrowRight className="ml-2 h-5 w-5" />
                 </Link>
               </Button>
               <Button asChild size="lg" variant="outline" className="bg-background/50 backdrop-blur-sm">
                 <Link href="/how-it-works">
-                  Learn More
+                  <PlayCircle className="mr-2 h-5 w-5" />
+                  Watch How It Works
                 </Link>
               </Button>
             </div>
              <div className="mt-8 flex justify-center md:justify-start items-center gap-4 text-sm">
                 <div className="flex -space-x-2">
-                    <Avatar className="w-8 h-8 border-2 border-background" />
-                    <Avatar className="w-8 h-8 border-2 border-background" />
-                    <Avatar className="w-8 h-8 border-2 border-background" />
+                    <Avatar className="w-8 h-8 border-2 border-background">
+                       <AvatarImage src="https://placehold.co/40x40.png" data-ai-hint="person avatar"/>
+                       <AvatarFallback>U1</AvatarFallback>
+                    </Avatar>
+                     <Avatar className="w-8 h-8 border-2 border-background">
+                       <AvatarImage src="https://placehold.co/40x40.png" data-ai-hint="person avatar"/>
+                       <AvatarFallback>U2</AvatarFallback>
+                    </Avatar>
+                     <Avatar className="w-8 h-8 border-2 border-background">
+                       <AvatarImage src="https://placehold.co/40x40.png" data-ai-hint="person avatar"/>
+                       <AvatarFallback>U3</AvatarFallback>
+                    </Avatar>
                 </div>
                 <div className="flex items-center gap-1">
                     <Star className="w-4 h-4 text-yellow-400 fill-yellow-400"/>
-                    <span className="text-muted-foreground">Trusted by 10,000+ members</span>
+                    <span className="text-muted-foreground font-medium">Trusted by 10,000+ members</span>
                 </div>
             </div>
           </div>

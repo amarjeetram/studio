@@ -24,7 +24,7 @@ export function PublicHeader() {
               <Link
                 key={href}
                 href={href}
-                className="transition-colors hover:text-accent"
+                className="transition-colors hover:text-primary"
               >
                 {label}
               </Link>
@@ -50,7 +50,7 @@ export function PublicHeader() {
                   <Link
                     key={href}
                     href={href}
-                    className="transition-colors hover:text-accent text-lg"
+                    className="transition-colors hover:text-primary text-lg"
                   >
                     {label}
                   </Link>
@@ -64,7 +64,7 @@ export function PublicHeader() {
            <Button variant="ghost" asChild>
              <Link href="/login">Log In</Link>
            </Button>
-           <Button asChild style={{ backgroundColor: 'hsl(var(--accent))', color: 'hsl(var(--accent-foreground))' }}>
+           <Button asChild className="bg-primary hover:bg-primary/90 text-primary-foreground">
              <Link href="/register">Sign Up</Link>
            </Button>
         </div>

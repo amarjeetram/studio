@@ -1,13 +1,15 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { adminDashboardData } from "@/lib/placeholder-data"
-import { DollarSign, ShieldCheck, Users, Activity } from "lucide-react"
+import { DollarSign, ShieldCheck, Users, Activity, CreditCard, CircleDollarSign } from "lucide-react"
+import Link from "next/link"
+import { Button } from "@/components/ui/button"
 
 export default function AdminDashboardPage() {
     const stats = [
-        { title: "Pending Payments", value: adminDashboardData.payments.filter(p => p.status === 'Pending').length, icon: DollarSign },
-        { title: "Pending KYC", value: adminDashboardData.kyc.filter(k => k.status === 'Pending').length, icon: ShieldCheck },
-        { title: "Pending Withdrawals", value: adminDashboardData.withdrawals.filter(w => w.status === 'Pending').length, icon: DollarSign },
-        { title: "Total Users", value: 2450, icon: Users },
+        { title: "Pending Payments", value: adminDashboardData.payments.filter(p => p.status === 'Pending').length, icon: CreditCard, href: "/admin/payments" },
+        { title: "Pending KYC", value: adminDashboardData.kyc.filter(k => k.status === 'Pending').length, icon: ShieldCheck, href: "/admin/kyc" },
+        { title: "Pending Withdrawals", value: adminDashboardData.withdrawals.filter(w => w.status === 'Pending').length, icon: CircleDollarSign, href: "/admin/withdrawals" },
+        { title: "Total Users", value: 2450, icon: Users, href: "#" },
     ]
     return (
         <div>
@@ -21,7 +23,9 @@ export default function AdminDashboardPage() {
                         </CardHeader>
                         <CardContent>
                             <div className="text-2xl font-bold">{stat.value}</div>
-                             <p className="text-xs text-muted-foreground">items require action</p>
+                             <Button variant="link" asChild className="p-0 h-auto text-xs text-muted-foreground">
+                                <Link href={stat.href}>View Details</Link>
+                             </Button>
                         </CardContent>
                     </Card>
                 ))}

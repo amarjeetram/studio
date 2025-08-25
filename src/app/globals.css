@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 body {
-  font-family: 'PT Sans', sans-serif;
+  font-family: 'Inter', sans-serif;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -24,17 +24,17 @@ h1, h2, h3, h4, h5, h6 {
     --secondary-foreground: 240 5.9% 10%;
     --muted: 240 4.8% 95.9%;
     --muted-foreground: 240 3.8% 46.1%;
-    --accent: 47 100% 50%;
-    --accent-foreground: 240 5.9% 10%;
+    --accent: 210 100% 50%;
+    --accent-foreground: 0 0% 98%;
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 98%;
     --border: 240 5.9% 90%;
     --input: 240 5.9% 90%;
     --ring: 339 99% 44%;
     --chart-1: 339 80% 55%;
-    --chart-2: 47 90% 55%;
+    --chart-2: 210 90% 55%;
     --chart-3: 339 70% 75%;
-    --chart-4: 47 80% 75%;
+    --chart-4: 210 80% 75%;
     --chart-5: 339 60% 85%;
     --radius: 0.5rem;
   }
@@ -52,7 +52,7 @@ h1, h2, h3, h4, h5, h6 {
     --secondary-foreground: 0 0% 98%;
     --muted: 240 3.7% 15.9%;
     --muted-foreground: 240 5% 64.9%;
-    --accent: 47 100% 50%;
+    --accent: 210 100% 60%;
     --accent-foreground: 240 5.9% 10%;
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 0 0% 98%;
@@ -60,9 +60,9 @@ h1, h2, h3, h4, h5, h6 {
     --input: 240 3.7% 15.9%;
     --ring: 339 90% 65%;
     --chart-1: 339 80% 65%;
-    --chart-2: 47 90% 60%;
+    --chart-2: 210 90% 60%;
     --chart-3: 339 70% 75%;
-    --chart-4: 47 80% 75%;
+    --chart-4: 210 80% 75%;
     --chart-5: 339 60% 85%;
   }
 }

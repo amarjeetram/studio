@@ -81,6 +81,10 @@ export function RegisterForm() {
           message: `Registration Failed: ${error.message || "An unexpected error occurred."}`,
         });
       }
+    } finally {
+        if(form.formState.isSubmitSuccessful === false) {
+            form.reset(form.getValues());
+        }
     }
   }
 

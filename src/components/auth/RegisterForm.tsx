@@ -26,6 +26,7 @@ import { Input } from '@/components/ui/input';
 import { auth, db } from '@/lib/firebase';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
 import { setDoc, doc, serverTimestamp } from 'firebase/firestore';
+import { useState } from 'react';
 
 const registerSchema = z.object({
   fullName: z.string().min(2, 'Full name must be at least 2 characters.'),
@@ -39,6 +40,7 @@ type RegisterFormValues = z.infer<typeof registerSchema>;
 
 export function RegisterForm() {
   const router = useRouter();
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const form = useForm<RegisterFormValues>({
     resolver: zodResolver(registerSchema),
     defaultValues: {
@@ -51,6 +53,9 @@ export function RegisterForm() {
   });
 
   async function onSubmit(data: RegisterFormValues) {
+    setIsSubmitting(true);
+    form.clearErrors(); // Clear previous errors
+
     try {
       // 1. Create user in Firebase Auth
       const userCredential = await createUserWithEmailAndPassword(auth, data.email, data.password);
@@ -81,6 +86,8 @@ export function RegisterForm() {
           message: `Registration Failed: ${error.message || "An unexpected error occurred."}`,
         });
       }
+    } finally {
+        setIsSubmitting(false);
     }
   }
 
@@ -165,8 +172,8 @@ export function RegisterForm() {
               )}
           </CardContent>
           <CardFooter className="flex flex-col gap-4">
-            <Button type="submit" className="w-full bg-primary hover:bg-primary/90" disabled={form.formState.isSubmitting}>
-              {form.formState.isSubmitting ? 'Creating Account...' : 'Create Account'}
+            <Button type="submit" className="w-full bg-primary hover:bg-primary/90" disabled={isSubmitting}>
+              {isSubmitting ? 'Creating Account...' : 'Create Account'}
             </Button>
             <div className="text-center text-sm">
               Already have an account?{' '}

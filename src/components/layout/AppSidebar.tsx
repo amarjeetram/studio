@@ -28,7 +28,6 @@ const navItems = [
 
 const bottomNavItems = [
     { href: "#", icon: LifeBuoy, label: "Support" },
-    // { href: "/login", icon: LogOut, label: "Logout" },
 ];
 
 

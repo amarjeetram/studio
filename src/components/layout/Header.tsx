@@ -36,6 +36,32 @@ const ThemeToggle = dynamic(() => import('./ThemeToggle').then(mod => mod.ThemeT
   loading: () => <Skeleton className="w-10 h-10 rounded-full" />,
 });
 
+const UserMenu = dynamic(() => Promise.resolve(() => (
+    <DropdownMenu>
+        <DropdownMenuTrigger asChild>
+            <Button
+            variant="outline"
+            size="icon"
+            className="overflow-hidden rounded-full"
+            >
+                <Avatar>
+                <AvatarImage src="https://placehold.co/100x100.png" alt="@user" data-ai-hint="person avatar"/>
+                <AvatarFallback>U</AvatarFallback>
+            </Avatar>
+            </Button>
+        </DropdownMenuTrigger>
+        <DropdownMenuContent align="end">
+            <DropdownMenuLabel>My Account</DropdownMenuLabel>
+            <DropdownMenuSeparator />
+            <DropdownMenuItem>Settings</DropdownMenuItem>
+            <DropdownMenuItem>Support</DropdownMenuItem>
+        </DropdownMenuContent>
+    </DropdownMenu>
+)), {
+    ssr: false,
+    loading: () => <Skeleton className="w-10 h-10 rounded-full" />
+});
+
 const mobileNavLinks = [
     { href: "/dashboard", icon: Home, label: "Dashboard" },
     { href: "/ad-view", icon: Eye, label: "Ad View" },
@@ -85,28 +111,7 @@ export function Header() {
             />
           </div>
           <ThemeToggle />
-          <DropdownMenu>
-            <DropdownMenuTrigger asChild>
-              <Button
-                variant="outline"
-                size="icon"
-                className="overflow-hidden rounded-full"
-              >
-                 <Avatar>
-                    <AvatarImage src="https://placehold.co/100x100.png" alt="@user" data-ai-hint="person avatar"/>
-                    <AvatarFallback>U</AvatarFallback>
-                </Avatar>
-              </Button>
-            </DropdownMenuTrigger>
-            <DropdownMenuContent align="end">
-              <DropdownMenuLabel>My Account</DropdownMenuLabel>
-              <DropdownMenuSeparator />
-              <DropdownMenuItem>Settings</DropdownMenuItem>
-              <DropdownMenuItem>Support</DropdownMenuItem>
-              <DropdownMenuSeparator />
-              {/* <DropdownMenuItem>Logout</DropdownMenuItem> */}
-            </DropdownMenuContent>
-          </DropdownMenu>
+          <UserMenu />
         </header>
     )
 }

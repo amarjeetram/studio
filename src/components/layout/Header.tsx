@@ -63,7 +63,8 @@ const UserMenu = dynamic(() => Promise.resolve(() => (
 });
 
 const mobileNavLinks = [
-    { href: "/dashboard", icon: Home, label: "Dashboard" },
+    { href: "/", icon: Home, label: "Home" },
+    { href: "/dashboard", icon: LineChart, label: "Dashboard" },
     { href: "/ad-view", icon: Eye, label: "Ad View" },
     { href: "/team", icon: Users2, label: "My Team" },
     { href: "/telegram", icon: Send, label: "Telegram Bonus" },
@@ -83,7 +84,7 @@ export function Header() {
             <SheetContent side="left" className="sm:max-w-xs">
               <nav className="grid gap-6 text-lg font-medium">
                 <Link
-                  href="/dashboard"
+                  href="/"
                   className="group flex h-10 w-10 shrink-0 items-center justify-center gap-2 rounded-full bg-primary text-lg font-semibold text-primary-foreground md:text-base"
                 >
                   <Package2 className="h-5 w-5 transition-all group-hover:scale-110" />

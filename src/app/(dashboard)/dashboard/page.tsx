@@ -8,9 +8,9 @@ import Link from "next/link"
 import { EarningsChart } from "@/components/dashboard/EarningsChart"
 
 const quickActions = [
-    { title: "View Daily Ad", href: "/dashboard/ad-view", icon: Eye },
-    { title: "Manage Team", href: "/dashboard/team", icon: Users },
-    { title: "Claim Telegram Bonus", href: "/dashboard/telegram", icon: Send },
+    { title: "View Daily Ad", href: "/ad-view", icon: Eye },
+    { title: "Manage Team", href: "/team", icon: Users },
+    { title: "Claim Telegram Bonus", href: "/telegram", icon: Send },
 ]
 
 export default function DashboardPage() {

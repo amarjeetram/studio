@@ -30,9 +30,9 @@ import { ThemeToggle } from "./ThemeToggle"
 
 const mobileNavLinks = [
     { href: "/dashboard", icon: Home, label: "Dashboard" },
-    { href: "/dashboard/ad-view", icon: Eye, label: "Ad View" },
-    { href: "/dashboard/team", icon: Users2, label: "My Team" },
-    { href: "/dashboard/telegram", icon: Send, label: "Telegram Bonus" },
+    { href: "/ad-view", icon: Eye, label: "Ad View" },
+    { href: "/team", icon: Users2, label: "My Team" },
+    { href: "/telegram", icon: Send, label: "Telegram Bonus" },
 ]
 
 

@@ -3,6 +3,7 @@ import { Button } from '@/components/ui/button';
 import { Logo } from '@/components/icons/Logo';
 import { Sheet, SheetContent, SheetTrigger, SheetClose } from '@/components/ui/sheet';
 import { Menu } from 'lucide-react';
+import { ThemeToggle } from './ThemeToggle';
 
 const navLinks = [
   { href: '/', label: 'Home' },
@@ -68,6 +69,7 @@ export function PublicHeader() {
                 <Logo />
              </Link>
           </div>
+           <ThemeToggle />
            <Button variant="ghost" asChild>
              <Link href="/login">Log In</Link>
            </Button>

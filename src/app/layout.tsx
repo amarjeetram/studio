@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { Toaster } from "@/components/ui/toaster"
 import './globals.css';
+import { ThemeProvider } from '@/components/layout/ThemeProvider';
 
 export const metadata: Metadata = {
   title: 'StarRise Network',
@@ -21,8 +22,15 @@ export default function RootLayout({
         <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
       </head>
       <body className="font-body antialiased">
-        {children}
-        <Toaster />
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          {children}
+          <Toaster />
+        </ThemeProvider>
       </body>
     </html>
   );

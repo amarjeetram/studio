@@ -26,6 +26,7 @@ import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
 import { Button } from "../ui/button"
 import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar"
 import { Logo } from "../icons/Logo"
+import { ThemeToggle } from "./ThemeToggle"
 
 const mobileNavLinks = [
     { href: "/dashboard", icon: Home, label: "Dashboard" },
@@ -75,6 +76,7 @@ export function Header() {
               className="w-full rounded-lg bg-background pl-8 md:w-[200px] lg:w-[320px]"
             />
           </div>
+          <ThemeToggle />
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
               <Button

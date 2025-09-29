@@ -1,3 +1,6 @@
+
+"use client";
+
 import Link from "next/link"
 import {
   Bell,
@@ -25,8 +28,13 @@ import { Input } from "@/components/ui/input"
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
 import { Button } from "../ui/button"
 import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar"
-import { Logo } from "../icons/Logo"
-import { ThemeToggle } from "./ThemeToggle"
+import dynamic from 'next/dynamic';
+import { Skeleton } from '@/components/ui/skeleton';
+
+const ThemeToggle = dynamic(() => import('./ThemeToggle').then(mod => mod.ThemeToggle), {
+  ssr: false,
+  loading: () => <Skeleton className="w-10 h-10 rounded-full" />,
+});
 
 const mobileNavLinks = [
     { href: "/dashboard", icon: Home, label: "Dashboard" },

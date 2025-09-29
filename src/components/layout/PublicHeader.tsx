@@ -1,9 +1,18 @@
+
+"use client";
+
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Logo } from '@/components/icons/Logo';
 import { Sheet, SheetContent, SheetTrigger, SheetClose } from '@/components/ui/sheet';
 import { Menu } from 'lucide-react';
-import { ThemeToggle } from './ThemeToggle';
+import dynamic from 'next/dynamic';
+import { Skeleton } from '@/components/ui/skeleton';
+
+const ThemeToggle = dynamic(() => import('./ThemeToggle').then(mod => mod.ThemeToggle), {
+  ssr: false,
+  loading: () => <Skeleton className="w-10 h-10 rounded-full" />,
+});
 
 const navLinks = [
   { href: '/', label: 'Home' },

@@ -76,8 +76,8 @@ export default function HowItWorksPage() {
                 variant="secondary"
                 className="bg-white text-primary hover:bg-white/90"
               >
-                <Link href="/register">
-                  Register Now <ArrowRight className="ml-2 h-5 w-5" />
+                <Link href="/#features">
+                  Learn More <ArrowRight className="ml-2 h-5 w-5" />
                 </Link>
               </Button>
             </div>

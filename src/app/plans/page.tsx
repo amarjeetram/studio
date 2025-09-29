@@ -86,7 +86,7 @@ export default function PlansPage() {
                 </CardContent>
                 <CardFooter>
                   <Button asChild className={`w-full ${plan.isPopular ? 'bg-accent hover:bg-accent/90 text-accent-foreground' : 'bg-primary hover:bg-primary/90'}`}>
-                    <Link href="/register">Choose Plan</Link>
+                    <Link href="/contact">Choose Plan</Link>
                   </Button>
                 </CardFooter>
               </Card>

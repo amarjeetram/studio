@@ -25,7 +25,7 @@ const navItems = [
 ];
 
 const bottomNavItems = [
-    { href: "/login", icon: LogOut, label: "Logout" },
+    // { href: "/login", icon: LogOut, label: "Logout" },
 ];
 
 export function AdminSidebar() {

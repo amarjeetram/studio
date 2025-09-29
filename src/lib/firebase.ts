@@ -1,22 +1,2 @@
-// Import the functions you need from the SDKs you need
-import { initializeApp, getApps, getApp } from "firebase/app";
-import { getAuth } from "firebase/auth";
-import { getFirestore } from "firebase/firestore";
-
-// Your web app's Firebase configuration
-const firebaseConfig = {
-  apiKey: "AIzaSyAxRuiDaa3gENn6-85Naol3kmpayFZ6heQ",
-  authDomain: "stare-6545e.firebaseapp.com",
-  projectId: "stare-6545e",
-  storageBucket: "stare-6545e.appspot.com",
-  messagingSenderId: "650083270679",
-  appId: "1:650083270679:web:cab7fcd3cedffd247cdc52",
-  measurementId: "G-DEZ0GYDPWM"
-};
-
-
-// Initialize Firebase
-const app = getApps().length > 0 ? getApp() : initializeApp(firebaseConfig);
-
-export const auth = getAuth(app);
-export const db = getFirestore(app);
+// All authentication-related Firebase code has been removed.
+// You can re-initialize Firebase here if needed for other services.

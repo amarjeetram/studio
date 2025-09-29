@@ -104,7 +104,7 @@ export function Header() {
               <DropdownMenuItem>Settings</DropdownMenuItem>
               <DropdownMenuItem>Support</DropdownMenuItem>
               <DropdownMenuSeparator />
-              <DropdownMenuItem>Logout</DropdownMenuItem>
+              {/* <DropdownMenuItem>Logout</DropdownMenuItem> */}
             </DropdownMenuContent>
           </DropdownMenu>
         </header>

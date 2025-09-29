@@ -22,8 +22,8 @@ export function Cta() {
               variant="secondary"
               className="bg-white text-primary hover:bg-white/90 shadow-lg transition-transform hover:scale-105"
             >
-              <Link href="/register">
-                Sign Up Now <ArrowRight className="ml-2 h-5 w-5" />
+              <Link href="/contact">
+                Contact Us <ArrowRight className="ml-2 h-5 w-5" />
               </Link>
             </Button>
           </div>

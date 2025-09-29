@@ -21,8 +21,8 @@ export function Hero() {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
               <Button asChild size="lg" className="bg-primary hover:bg-primary/90 text-primary-foreground shadow-lg transition-transform hover:scale-105">
-                <Link href="/register">
-                  Get Started <ArrowRight className="ml-2 h-5 w-5" />
+                <Link href="/about">
+                  Learn More <ArrowRight className="ml-2 h-5 w-5" />
                 </Link>
               </Button>
               <Button asChild size="lg" variant="outline" className="bg-background/50 backdrop-blur-sm">

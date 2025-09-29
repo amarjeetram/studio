@@ -79,11 +79,8 @@ export function PublicHeader() {
              </Link>
           </div>
            <ThemeToggle />
-           <Button variant="ghost" asChild>
-             <Link href="/login">Log In</Link>
-           </Button>
            <Button asChild className="bg-primary hover:bg-primary/90 text-primary-foreground">
-             <Link href="/register">Sign Up</Link>
+             <Link href="/dashboard">Dashboard</Link>
            </Button>
         </div>
       </div>

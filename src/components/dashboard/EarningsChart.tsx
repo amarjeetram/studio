@@ -1,16 +1,6 @@
 "use client"
 
-import { TrendingUp } from "lucide-react"
-import { Bar, BarChart, CartesianGrid, XAxis } from "recharts"
-
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card"
+import { Bar, BarChart, CartesianGrid, XAxis, ResponsiveContainer } from "recharts"
 import {
   ChartContainer,
   ChartTooltip,
@@ -36,9 +26,9 @@ const chartConfig = {
 
 export function EarningsChart() {
   return (
-    <div className="w-full h-[250px]">
+    <ResponsiveContainer width="100%" height="100%">
       <ChartContainer config={chartConfig}>
-        <BarChart accessibilityLayer data={chartData}>
+        <BarChart accessibilityLayer data={chartData} margin={{ top: 20, right: 20, bottom: 20, left: 20 }}>
           <CartesianGrid vertical={false} />
           <XAxis
             dataKey="date"
@@ -54,6 +44,6 @@ export function EarningsChart() {
           <Bar dataKey="earnings" fill="var(--color-earnings)" radius={4} />
         </BarChart>
       </ChartContainer>
-    </div>
+    </ResponsiveContainer>
   )
 }

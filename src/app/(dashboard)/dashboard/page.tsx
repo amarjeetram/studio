@@ -66,7 +66,7 @@ export default function DashboardPage() {
                        <CardTitle>Earnings Overview</CardTitle>
                        <CardDescription>Your earnings over the last 7 days.</CardDescription>
                    </CardHeader>
-                   <CardContent>
+                   <CardContent className="h-[250px] p-0">
                        <EarningsChart />
                    </CardContent>
                 </Card>

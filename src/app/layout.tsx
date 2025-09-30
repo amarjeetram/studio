@@ -4,9 +4,8 @@ import './globals.css';
 import { ThemeProvider } from '@/components/layout/ThemeProvider';
 
 export const metadata: Metadata = {
-  title: 'StarRise Network',
-  description: 'Join the network of achievers and rise to your potential.',
-  manifest: '/manifest.json'
+  title: 'SmartToolsWala - All-in-one smart tools',
+  description: 'Powered by advanced AI, offering all-in-one tools for productivity, file conversion, SEO, image editing, and coding utilities.',
 };
 
 export default function RootLayout({
@@ -24,7 +23,7 @@ export default function RootLayout({
       <body className="font-body antialiased">
         <ThemeProvider
           attribute="class"
-          defaultTheme="system"
+          defaultTheme="dark"
           enableSystem
           disableTransitionOnChange
         >

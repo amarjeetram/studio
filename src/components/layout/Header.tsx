@@ -1,21 +1,10 @@
 
 "use client";
 
-import Link from "next/link"
 import {
-  Bell,
-  Home,
-  LineChart,
-  Package,
-  Package2,
   PanelLeft,
   Search,
-  ShoppingCart,
-  Users2,
-  Eye,
-  Send,
 } from "lucide-react"
-
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -30,50 +19,17 @@ import { Button } from "../ui/button"
 import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar"
 import dynamic from 'next/dynamic';
 import { Skeleton } from '@/components/ui/skeleton';
+import { Logo } from "../icons/Logo";
+import { Sidebar } from "./Sidebar";
 
 const ThemeToggle = dynamic(() => import('./ThemeToggle').then(mod => mod.ThemeToggle), {
   ssr: false,
   loading: () => <Skeleton className="w-10 h-10 rounded-full" />,
 });
 
-const UserMenu = dynamic(() => Promise.resolve(() => (
-    <DropdownMenu>
-        <DropdownMenuTrigger asChild>
-            <Button
-            variant="outline"
-            size="icon"
-            className="overflow-hidden rounded-full"
-            >
-                <Avatar>
-                <AvatarImage src="https://placehold.co/100x100.png" alt="@user" data-ai-hint="person avatar"/>
-                <AvatarFallback>U</AvatarFallback>
-            </Avatar>
-            </Button>
-        </DropdownMenuTrigger>
-        <DropdownMenuContent align="end">
-            <DropdownMenuLabel>My Account</DropdownMenuLabel>
-            <DropdownMenuSeparator />
-            <DropdownMenuItem>Settings</DropdownMenuItem>
-            <DropdownMenuItem>Support</DropdownMenuItem>
-        </DropdownMenuContent>
-    </DropdownMenu>
-)), {
-    ssr: false,
-    loading: () => <Skeleton className="w-10 h-10 rounded-full" />
-});
-
-const mobileNavLinks = [
-    { href: "/", icon: Home, label: "Home" },
-    { href: "/dashboard", icon: LineChart, label: "Dashboard" },
-    { href: "/ad-view", icon: Eye, label: "Ad View" },
-    { href: "/team", icon: Users2, label: "My Team" },
-    { href: "/telegram", icon: Send, label: "Telegram Bonus" },
-]
-
-
 export function Header() {
     return (
-        <header className="sticky top-0 z-30 flex h-14 items-center gap-4 border-b bg-background px-4 sm:static sm:h-auto sm:border-0 sm:bg-transparent sm:px-6">
+        <header className="sticky top-0 z-30 flex h-14 items-center gap-4 border-b bg-background/80 backdrop-blur-sm px-4 sm:static sm:h-auto sm:border-0 sm:bg-transparent sm:px-6">
           <Sheet>
             <SheetTrigger asChild>
               <Button size="icon" variant="outline" className="sm:hidden">
@@ -81,38 +37,27 @@ export function Header() {
                 <span className="sr-only">Toggle Menu</span>
               </Button>
             </SheetTrigger>
-            <SheetContent side="left" className="sm:max-w-xs">
-              <nav className="grid gap-6 text-lg font-medium">
-                <Link
-                  href="/"
-                  className="group flex h-10 w-10 shrink-0 items-center justify-center gap-2 rounded-full bg-primary text-lg font-semibold text-primary-foreground md:text-base"
-                >
-                  <Package2 className="h-5 w-5 transition-all group-hover:scale-110" />
-                  <span className="sr-only">StarRise Network</span>
-                </Link>
-                {mobileNavLinks.map(link => (
-                    <Link
-                        key={link.href}
-                        href={link.href}
-                        className="flex items-center gap-4 px-2.5 text-muted-foreground hover:text-foreground"
-                    >
-                        <link.icon className="h-5 w-5" />
-                        {link.label}
-                    </Link>
-                ))}
-              </nav>
+            <SheetContent side="left" className="sm:max-w-xs bg-background p-0">
+                <div className="p-4">
+                    <Logo />
+                </div>
+                <Sidebar isMobile={true} />
             </SheetContent>
           </Sheet>
+          
           <div className="relative ml-auto flex-1 md:grow-0">
             <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-muted-foreground" />
             <Input
               type="search"
               placeholder="Search..."
-              className="w-full rounded-lg bg-background pl-8 md:w-[200px] lg:w-[320px]"
+              className="w-full rounded-lg bg-secondary pl-8 md:w-[200px] lg:w-[320px]"
             />
           </div>
           <ThemeToggle />
-          <UserMenu />
+           <div className="flex items-center gap-2">
+            <Button variant="ghost">Login</Button>
+            <Button>Sign Up</Button>
+          </div>
         </header>
     )
 }

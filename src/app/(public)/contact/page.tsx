@@ -1,16 +1,15 @@
-import { PublicHeader } from '@/components/layout/PublicHeader';
-import { Footer } from '@/components/layout/Footer';
+
 import { Card, CardContent } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Button } from '@/components/ui/button';
 import { Label } from '@/components/ui/label';
 import { Mail, Phone, MapPin } from 'lucide-react';
+import { Footer } from '@/components/layout/Footer';
 
 export default function ContactPage() {
   return (
-    <div className="flex flex-col min-h-screen bg-indigo-50/50 dark:bg-transparent">
-      <PublicHeader />
+    <div className="flex flex-col min-h-screen">
       <main className="flex-grow">
          <section className="py-20 md:py-28 text-center bg-gradient-to-b from-background to-indigo-50 dark:from-background dark:to-primary/10">
           <div className="container">

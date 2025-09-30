@@ -1,10 +1,9 @@
-import { PublicHeader } from '@/components/layout/PublicHeader';
+
 import { Footer } from '@/components/layout/Footer';
 
 export default function TermsPage() {
   return (
-    <div className="flex flex-col min-h-screen bg-indigo-50/50 dark:bg-transparent">
-      <PublicHeader />
+    <div className="flex flex-col min-h-screen">
       <main className="flex-grow py-20 md:py-28">
         <div className="container">
           <h1 className="text-4xl font-bold font-headline mb-8">Terms and Conditions</h1>

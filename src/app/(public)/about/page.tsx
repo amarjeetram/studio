@@ -1,10 +1,10 @@
-import { PublicHeader } from '@/components/layout/PublicHeader';
-import { Footer } from '@/components/layout/Footer';
+
 import Image from 'next/image';
 import { getEnhancedMessage } from '@/app/actions';
 import { InspirationalContent } from '@/components/about/InspirationalContent';
 import { Card } from '@/components/ui/card';
 import { Users, Target, Eye, Shield } from 'lucide-react';
+import { Footer } from '@/components/layout/Footer';
 
 const coreValues = [
     {
@@ -34,8 +34,7 @@ export default async function AboutPage() {
     const inspirationalMessage = await getEnhancedMessage(initialContent);
 
     return (
-        <div className="flex flex-col min-h-screen bg-indigo-50/50 dark:bg-transparent">
-            <PublicHeader />
+        <div className="flex flex-col min-h-screen">
             <main className="flex-grow">
                 <section className="py-20 md:py-28 text-center bg-gradient-to-b from-background to-indigo-50 dark:from-background dark:to-primary/10">
                     <div className="container">

@@ -6,12 +6,6 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion"
 import {
-  Tooltip,
-  TooltipContent,
-  TooltipTrigger,
-  TooltipProvider,
-} from "@/components/ui/tooltip"
-import {
     Home,
     CircleUser,
     DollarSign,
@@ -34,6 +28,7 @@ import {
 } from 'lucide-react';
 import { Logo } from "../icons/Logo";
 import { cn } from "@/lib/utils";
+import { Button } from "../ui/button";
 
 
 const mainNav = [
@@ -123,7 +118,7 @@ const socialLinks = [
     { href: "#", icon: Linkedin, label: "LinkedIn" },
     { href: "#", icon: Twitter, label: "Twitter" },
     { href: "#", icon: Facebook, label: "Facebook" },
-    { href: "#", next: true, icon: Instagram, label: "Instagram" },
+    { href: "#", icon: Instagram, label: "Instagram" },
     { href: "#", icon: Send, label: "Telegram" },
 ];
 
@@ -131,95 +126,68 @@ const socialLinks = [
 export function Sidebar({ isMobile = false }: { isMobile?: boolean }) {
     
     const sidebarContent = (
-        <TooltipProvider>
-            {!isMobile && (
-                <nav className="flex flex-col items-center gap-4 px-2 sm:py-5">
-                    <Link
-                        href="#"
-                        className="group flex h-9 w-9 shrink-0 items-center justify-center gap-2 rounded-full bg-primary text-lg font-semibold text-primary-foreground md:h-8 md:w-8 md:text-base"
-                    >
-                        <Code className="h-4 w-4 transition-all group-hover:scale-110" />
-                        <span className="sr-only">SmartToolsWala</span>
+      <>
+        <div className="flex flex-col gap-2 p-4">
+            {mainNav.map((item, index) => (
+                <Button key={item.label} asChild variant={index === 0 ? "secondary" : "ghost"} className="justify-start gap-3 text-base h-11">
+                    <Link href={item.href} >
+                        <item.icon className="h-5 w-5" />
+                        {item.label}
                     </Link>
-
-                    {mainNav.map((item) => (
-                        <Tooltip key={item.label}>
-                            <TooltipTrigger asChild>
-                                <Link
-                                    href={item.href}
-                                    className="flex h-9 w-9 items-center justify-center rounded-lg text-muted-foreground transition-colors hover:text-foreground md:h-8 md:w-8"
-                                >
-                                    <item.icon className="h-5 w-5" />
-                                    <span className="sr-only">{item.label}</span>
-                                </Link>
-                            </TooltipTrigger>
-                            <TooltipContent side="right">{item.label}</TooltipContent>
-                        </Tooltip>
-                    ))}
-                </nav>
-            )}
-            
-            {isMobile && (
-                 <div className="flex flex-col gap-4 px-4 py-2">
-                    {mainNav.map((item) => (
-                         <Link key={item.label} href={item.href} className="flex items-center gap-3 rounded-lg px-3 py-2 text-muted-foreground transition-all hover:text-primary">
-                            <item.icon className="h-4 w-4" />
-                            {item.label}
-                        </Link>
-                    ))}
-                </div>
-            )}
-            
-            <div className="flex-1 overflow-y-auto px-2 mt-4">
-                 <Accordion type="multiple" className="w-full">
-                    {toolCategories.map((category) => (
-                        <AccordionItem key={category.title} value={category.title} className="border-none">
-                            <AccordionTrigger className="text-sm py-2 px-2 rounded-md hover:bg-muted/50 hover:no-underline text-muted-foreground data-[state=open]:text-foreground data-[state=open]:font-semibold">
-                                <div className="flex items-center gap-3">
-                                    <category.icon className={cn("h-4 w-4", isMobile && "h-5 w-5")} />
-                                    {isMobile && <span>{category.title}</span>}
-                                </div>
-                            </AccordionTrigger>
-                            <AccordionContent>
-                                <div className={cn("flex flex-col gap-1 pl-6", isMobile && "pl-10")}>
-                                     {category.links.map(link => (
-                                         <Link key={link.label} href={link.href} className="text-xs py-1 text-muted-foreground hover:text-foreground">
-                                            {link.label}
-                                         </Link>
-                                     ))}
-                                </div>
-                            </AccordionContent>
-                        </AccordionItem>
-                    ))}
-                </Accordion>
-            </div>
-            
-            <nav className={cn("flex flex-col items-center gap-2 px-2 mt-auto py-5", isMobile && "flex-row flex-wrap justify-center px-4")}>
-                {socialLinks.map((item) => (
-                     <Tooltip key={item.label}>
-                        <TooltipTrigger asChild>
-                            <Link
-                                href={item.href}
-                                className="flex h-9 w-9 items-center justify-center rounded-lg text-muted-foreground transition-colors hover:text-foreground md:h-8 md:w-8"
-                            >
-                                <item.icon className="h-4 w-4" />
-                                <span className="sr-only">{item.label}</span>
-                            </Link>
-                        </TooltipTrigger>
-                        {!isMobile && <TooltipContent side="right">{item.label}</TooltipContent>}
-                    </Tooltip>
+                </Button>
+            ))}
+        </div>
+        
+        <div className="flex-1 overflow-y-auto px-4">
+              <Accordion type="multiple" className="w-full">
+                {toolCategories.map((category) => (
+                    <AccordionItem key={category.title} value={category.title} className="border-none">
+                        <AccordionTrigger className="text-base py-3 px-3 rounded-md hover:bg-muted hover:no-underline text-foreground">
+                            <div className="flex items-center gap-3">
+                                <category.icon className="h-5 w-5" />
+                                <span>{category.title}</span>
+                            </div>
+                        </AccordionTrigger>
+                        <AccordionContent>
+                            <div className="flex flex-col gap-1 pl-11 py-1">
+                                  {category.links.map(link => (
+                                      <Link key={link.label} href={link.href} className="text-sm py-1.5 px-2 rounded-md text-muted-foreground hover:text-foreground hover:bg-muted">
+                                        {link.label}
+                                      </Link>
+                                  ))}
+                            </div>
+                        </AccordionContent>
+                    </AccordionItem>
                 ))}
-            </nav>
-        </TooltipProvider>
+            </Accordion>
+        </div>
+        
+        <div className="mt-auto flex flex-col gap-2 p-4">
+            <p className="text-sm font-medium text-muted-foreground px-3">Connect</p>
+            {socialLinks.map((item) => (
+                 <Button key={item.label} asChild variant="ghost" className="justify-start gap-3 text-base h-11">
+                    <Link href={item.href}>
+                        <item.icon className="h-5 w-5" />
+                        {item.label}
+                    </Link>
+                </Button>
+            ))}
+        </div>
+      </>
     );
 
     if (isMobile) {
-        return sidebarContent;
+        return <div className="flex flex-col h-full">{sidebarContent}</div>;
     }
     
     return (
-        <aside className="fixed inset-y-0 left-0 z-10 hidden w-14 flex-col border-r bg-background sm:flex">
-            {sidebarContent}
+        <aside className="fixed inset-y-0 left-0 z-10 hidden w-72 flex-col border-r bg-card sm:flex">
+            <div className="flex items-center h-16 border-b px-6">
+                <Logo />
+            </div>
+            <div className="flex flex-col h-[calc(100vh-4rem)]">
+              {sidebarContent}
+            </div>
         </aside>
     )
 }

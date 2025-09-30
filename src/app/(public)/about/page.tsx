@@ -1,7 +1,5 @@
 
 import Image from 'next/image';
-import { getEnhancedMessage } from '@/app/actions';
-import { InspirationalContent } from '@/components/about/InspirationalContent';
 import { Card } from '@/components/ui/card';
 import { Users, Target, Eye, Shield } from 'lucide-react';
 import { Footer } from '@/components/layout/Footer';
@@ -29,10 +27,7 @@ const coreValues = [
     }
 ]
 
-export default async function AboutPage() {
-    const initialContent = "Our company is about helping people achieve their dreams. We believe in the power of direct selling to create financial freedom through strong mentorship and a people-first approach.";
-    const inspirationalMessage = await getEnhancedMessage(initialContent);
-
+export default function AboutPage() {
     return (
         <div className="flex flex-col min-h-screen">
             <main className="flex-grow">
@@ -67,12 +62,6 @@ export default async function AboutPage() {
                                 <p className="mt-2 text-muted-foreground">To become the world's most trusted and inspiring direct selling network, creating a legacy of financial freedom and personal fulfillment for millions of families.</p>
                             </div>
                         </div>
-                    </div>
-                </section>
-
-                <section className="py-20 md:py-28 bg-indigo-50/50 dark:bg-card">
-                    <div className="container">
-                        <InspirationalContent initialMessage={inspirationalMessage} originalContent={initialContent} />
                     </div>
                 </section>
 
